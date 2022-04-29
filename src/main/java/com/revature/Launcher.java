@@ -1,6 +1,7 @@
 package com.revature;
 
 import io.javalin.Javalin;
+import com.revature.backend.util.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -10,16 +11,24 @@ import java.sql.SQLException;
 
 public class Launcher {
 
-    private static Connection ConnectionUtil;
-
     public static void main(String[] args) {
 
-       /* try(Connection conn = ConnectionUtil.getConnection()) {
-            System.out.println("CONNECTED to ERS AWS )");
-        }   catch(SQLException e) {//if connection fails, catch exception and print to StackTrace
-                System.out.println("Connection Error");
+        //try catch tests if Connection from ConnectionUtil Class is successfull
+        //Note: getConnection() will return a Connection Object if successful
+            try(Connection connection = ConnectionUtil.getConnection()) {
+
+            }catch (SQLException e) {//Connection failure triggers catch exception and print StackTrace
+                System.out.println("Failed Connection");
                 e.printStackTrace();
-*/
+            }
+        //Sending web HTTP reqs. to Java Server
+        //Javalin is a tech used to take in HTTP reqs. from frontend and send back HTTP Resps.
+        //HTTP Resps. can be anything from reqs data to status code received.
+
+        //Instatiating an EmployeeController object to gain access to Javalin Handelers
+        //designed to send reqs to the right controller
+
+
         //Create connection
         //Typical Javalin syntax to create a Javalin object
         Javalin app = Javalin.create(

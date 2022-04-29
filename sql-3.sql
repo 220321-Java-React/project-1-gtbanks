@@ -20,15 +20,21 @@ create table ers_reimbursement(
 	reimb_status_id_fk int references reimbursement_status (reimb_status_id),
 	reimb_type_id_fk int references reimbursement_type (reimb_type_id)	
 );
-create table ers_reimbursements(
+create table ers_reimbursement(
 	reimb_id serial primary key,
 	reimb_type text,
 	reimb_amount int,
 	reimb_submitted timestamp,
-	reimb_author_id_fk int references ers_user (user_id),
+	reimb_author_id_fk int references ers_user (ers_user_id),
 	reimb_status_id_fk int references reimbursement_status (reimb_status_id),
 	reimb_type_id_fk int references reimbursement_type (reimb_type_id)	
 );
+
+
+
+
+
+
 insert into ers_reimbursements(reimb_submitted)
 VALUES (current_timestamp);
 
