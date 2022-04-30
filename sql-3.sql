@@ -25,14 +25,10 @@ create table ers_reimbursement(
 	reimb_type text,
 	reimb_amount int,
 	reimb_submitted timestamp,
-	reimb_author_id_fk int references ers_user (ers_user_id),
+	reimb_author_id_fk int references ers_user (user_id),
 	reimb_status_id_fk int references reimbursement_status (reimb_status_id),
 	reimb_type_id_fk int references reimbursement_type (reimb_type_id)	
 );
-
-
-
-
 
 
 insert into ers_reimbursements(reimb_submitted)
@@ -45,7 +41,7 @@ set to_timestamp()
 
 drop table ers_reimbursement; 
 	pending
-insert into ers_reimbursements (reimb_id, reimb_type, reimb_amount, reimb_submitted, reimb_author_id_fk, reimb_status_id_fk)
+insert into ers_reimbursement (reimb_id, reimb_type, reimb_amount, reimb_submitted, reimb_author_id_fk, reimb_status_id_fk)
 values (default, 'Lodging', 300, default, default, 1),
        (default, 'Travel', 175, default, default, 2),
        (default, 'Travel', 894, default, default, 2),

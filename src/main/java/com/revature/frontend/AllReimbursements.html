@@ -22,18 +22,17 @@
 
 <!--A div with a class of "container" makes it so that bootstrap will be applied to this div-->
 <!-- Everything within this div will get styled with the appropriate bootstrap styling-->
-<div class="container p-3 mb-2 bg-gradient-warning text-secondary">
+<div class= "container p-3 mb-2 bg-gradient-warning text-secondary  ">
 
     <h6>Employee Reimbursement System</h6>
     <h3>myERS</h3>
     <h6>Management
-        <button id="getAllReimbursementsButton" class="text-dark btn btn-sm btn-warning ">View All</button>
-        <button id="getAllPendingReimbursementsButton" class="text-dark btn btn-sm btn-warning">Pending</button>
-        <button id="getAllApprovedReimbursementsButton" class="text-dark btn btn-sm btn-warning">Approved</button>
-        <button id="getAllDeniedReimbursementsButton" class="text-dark btn btn-sm btn-warning">Denied</button>
+        <button id="getAllReimbursementsButton" class="text-dark btn btn-sm btn-warning float-right">View All</button>
+        <button id="getAllPendingReimbursementsButton" class="text-dark btn btn-sm btn-warning float-right">Pending</button>
+        <button id="getAllApprovedReimbursementsButton" class="text-dark btn btn-sm btn-warning float-right">Approved</button>
+        <button id="getAllDeniedReimbursementsButton" class="text-dark btn btn-sm btn-warning pull-right">Denied</button>
 
     </h6>
-
     <!-- See if we need line breaks... -->
 
     <!-- With our CLI in P0, we were able to populate our DB data in the Java console -->
@@ -41,7 +40,7 @@
     <!-- I want a table of employee information which we'll SELECT from the DB -->
 
     <div id="table-row" class="row">
-        <table id="reimbursements" class="text-secondary table table-light table-bordered table-hover table-striped">
+        <table id="reimbursements" class="font-size: smaller text-secondary table table-light table-bordered table-hover table-striped">
             <thead>
             <tr>
                 <th>ID</th>

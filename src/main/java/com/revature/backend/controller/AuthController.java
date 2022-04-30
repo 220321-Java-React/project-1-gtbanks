@@ -1,8 +1,8 @@
 package com.revature.backend.controller;
 
-
 import com.google.gson.Gson;
 
+import com.revature.backend.domain.model.User;
 import com.revature.backend.dtos.UserLoginDTO;
 import com.revature.backend.service.AuthService;
 import io.javalin.http.Handler;
@@ -21,7 +21,7 @@ public class AuthController {
     //import Handler.io.Javalin
     public Handler loginHandler = (ctx) -> {
 
-        //Http reqs. handeled via ctx.body();
+        //Http reqs. handled via ctx.body();
         String body = ctx.body();
 
         //create new GSON object for Java <-> JSON conversions
@@ -29,10 +29,12 @@ public class AuthController {
 
         //turn JSON String directly into a LoginDTO object
         //remember, from Json() is the method that takes JSON and turns it into some Java object
-        UserLoginDTO loginDTO = gson.fromJson(body, UserLoginDTO.class);
+        UserLoginDTO userLoginDTO = gson.fromJson(body, UserLoginDTO.class);
 
         //control flow to determine what happens in the event of successful/unsuccessful login
-        if(authService.login(loginDTO.getUsername(), loginDTO.getPassword()) ! = null) {
+
+        User user = authService.userLogin(userLoginDTO);
+        if (user != null) {
 
             //IF successful login create a user session so they can access the appl functionalities
             session = ctx.req.getSession(true);
@@ -40,16 +42,16 @@ public class AuthController {
             //return successful status code
             ctx.status(202); //accepted
 
-            //get our employee object as JSON
-            //here, use.toJson() to take in result of success login which is User object
-            String userJSON = gson.toJson(authService.login(loginDTO.getUsername(), loginDTO.getPassword()));
+            //get our user object as JSON
+            //here, use.toJson() to take in result of login success which is User object
+            //String userJSON = gson.toJson(authService.ulog(loginDTO.getUsername(), loginDTO.getPassword()));
+            //Send back our UserLogin object
+            ctx.result(gson.toJson(user));
 
-            ctx.result(userJSON);
-
-        }else {
-                ctx.status(401); //unauthorized
-                System.out.println("Failed Login");
-         }
-    }
+        } else {
+            ctx.status(401); //unauthorized
+            System.out.println("Failed Login");
+        }
+    };
 }
 

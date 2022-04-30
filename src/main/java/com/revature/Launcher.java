@@ -1,5 +1,7 @@
 package com.revature;
 
+import com.revature.backend.controller.AuthController;
+import com.revature.backend.controller.ReimbursementController;
 import io.javalin.Javalin;
 import com.revature.backend.util.ConnectionUtil;
 
@@ -21,30 +23,31 @@ public class Launcher {
                 System.out.println("Failed Connection");
                 e.printStackTrace();
             }
-        //Sending web HTTP reqs. to Java Server
-        //Javalin is a tech used to take in HTTP reqs. from frontend and send back HTTP Resps.
-        //HTTP Resps. can be anything from reqs data to status code received.
+        //Webpage needs to send HTTP requests to Java server
+        //Javalin is a technology used to take in HTTP requests from FE and send back HTTP responses
+        //HTTP Responses can range from reqquested data to status code: "data received" msg.
 
-        //Instatiating an EmployeeController object to gain access to Javalin Handelers
-        //designed to send reqs to the right controller
+        //Instantiating an EmployeeController object to access it's Handlers
+        ReimbursementController reimbursementController = new ReimbursementController();
 
+      //  AuthController authController = new AuthController();
 
-        //Create connection
-        //Typical Javalin syntax to create a Javalin object
+        //Javalin syntax to create Javalin object
         Javalin app = Javalin.create(
                 //the config lambda lets us specify certain configurations.
                 config -> {
-                    config.enableCorsForAllOrigins(); //allows us to process JS requests from
+                    config.enableCorsForAllOrigins(); //allows us to process JS requests from anywhere (overriding security protocol)
                 }
+        //starts Javalin application on port 3000
         ).start(3000);
-        //We ned to make some endpoint handlers, which will take in requests and send them where
-        //need to go.they are like the traffic cop to your server thy direct it
+        //We need to make some endpoint handlers, which will take in requests and send them where
+        //they need to go.they are like the traffic cop to your server they direct traffic to specific appl locations
 
-        //handler ending in /employees
-        //the app.get() method takes in a URL endpoint
-        //  app.get("/employees", handler);
+        //handlers ending in reimbursement that takes in GET req - will return all reimbursements
+        //the app.get() method takes in a URL endpoint and a place in the server to send the request
+        app.get("/reimbursements", reimbursementController.getAllHandler);
+        //handler ending in /reimbursements
 
-        //make a new class
 
     }
 }

@@ -1,8 +1,12 @@
 package com.revature.backend.domain.DAO;
 
-public class UserLoginDAOInterface {
+import com.revature.backend.domain.model.User;
 
-    void getLogin(String username, String password) {
+import java.sql.SQLException;
 
-    }
+public interface UserLoginDAOInterface {
+
+    User login(String username, String password) throws SQLException;
+
+
 }

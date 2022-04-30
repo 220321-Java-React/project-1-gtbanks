@@ -13,8 +13,7 @@ import com.revature.backend.util.ConnectionUtil;
 
 import static com.revature.backend.util.ConnectionUtil.getConnection;
 
-public class ReimbursementDAO implements ReimbursementDAOInterface{
-
+public class ReimbursementDAO implements ReimbursementDAOInterface {
 
 
     @Override
@@ -29,13 +28,13 @@ public class ReimbursementDAO implements ReimbursementDAOInterface{
 
     @Override
     public List<Reimbursement> getAll()
-                                        throws SQLException {
+            throws SQLException {
         try (Connection connection = getConnection()) {
             String sql = "select * from ers_reimbursement;";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             List<Reimbursement> reimbursementList = new ArrayList<>();
-            while( resultSet.next()) {
+            while (resultSet.next()) {
                 Reimbursement reimbursement = new Reimbursement(
                         resultSet.getInt("reimb_id"),
                         resultSet.getString("reimb_type"),
@@ -46,12 +45,14 @@ public class ReimbursementDAO implements ReimbursementDAOInterface{
                 );
                 reimbursementList.add(reimbursement);
             }
-                return reimbursementList;
-           catch (SQLException e) {
-                System.out.println("Error selecting your request");
-            }
+
+            return reimbursementList;
+        } catch (SQLException e) {
+            System.out.println("Error selecting your request");
+            return new ArrayList<>();
         }
     }
+
 
     @Override
     public List<Reimbursement> getAllOfMine(int authorId) throws SQLException {
@@ -65,7 +66,7 @@ public class ReimbursementDAO implements ReimbursementDAOInterface{
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 Reimbursement reimbursement = new Reimbursement(
                         resultSet.getInt("reimb_id"),
                         resultSet.getString("reimb_type"),
@@ -77,7 +78,7 @@ public class ReimbursementDAO implements ReimbursementDAOInterface{
                 reimbursementList.add(reimbursement);
             }
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Error selecting your request");
         }
 
@@ -103,6 +104,7 @@ public class ReimbursementDAO implements ReimbursementDAOInterface{
     public void update(int reimbursementId, Reimbursement updatedReimbursement) {
 
     }
+
 }
 
 
