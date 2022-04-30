@@ -46,8 +46,10 @@ public class Launcher {
         //handlers ending in reimbursement that takes in GET req - will return all reimbursements
         //the app.get() method takes in a URL endpoint and a place in the server to send the request
         app.get("/reimbursements", reimbursementController.getAllHandler);
-        //handler ending in /reimbursements
+        //handler ending in /login that takes in POST requests validates user login
+        //the app.post() method takes in a URL endpoint, and a place in the server to send the request
 
+        app.post("/login", handler);
 
     }
 }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 
 public class AuthController {
-
+    //We need an AuthService object to use it's method
     AuthService authService = new AuthService();
 
     //empty HttpSession object will be filled on login success
@@ -20,14 +20,14 @@ public class AuthController {
     //loginHandler to handle login req() which go to app.post("/login", xxx)
     //import Handler.io.Javalin
     public Handler loginHandler = (ctx) -> {
-
+        //post requests have incoming data, which we access with ctx.body/body of request/user data
         //Http reqs. handled via ctx.body();
         String body = ctx.body();
 
         //create new GSON object for Java <-> JSON conversions
         Gson gson = new Gson();
 
-        //turn JSON String directly into a LoginDTO object
+        //turn JSON String (now converted to Java) directly into a LoginDTO object
         //remember, from Json() is the method that takes JSON and turns it into some Java object
         UserLoginDTO userLoginDTO = gson.fromJson(body, UserLoginDTO.class);
 
