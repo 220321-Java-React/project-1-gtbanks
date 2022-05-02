@@ -21,8 +21,7 @@ public class AuthService {
 
         //define userloginDAO
         //We are using params(username/password) in LoginDTO
-        User user = userLoginDAO.login(userLoginDTO.getUsername(), userLoginDTO.getPassword(),
-                                        userLoginDTO.getUserRole());
+        User user = userLoginDAO.login(userLoginDTO.getUsername(), userLoginDTO.getPassword());
 
         //since being called from controller it will return to controller
         return user;

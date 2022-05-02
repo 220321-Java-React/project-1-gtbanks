@@ -31,7 +31,7 @@ public class Launcher {
         //Instantiating an ReimbursementController object to access it's Handlers
         ReimbursementController reimbursementController = new ReimbursementController();
 
-        //AuthController authController = new AuthController();  //mentor says take this out
+        AuthController authController = new AuthController();
 
         //Javalin syntax to create Javalin object
         Javalin app = Javalin.create(
@@ -50,7 +50,7 @@ public class Launcher {
         //handler ending in /login that takes in POST requests validates user login
         //the app.post() method takes in a URL endpoint, and a place in the server to send the request
 
-     //   app.post("/login", handler);
+        app.post("/login", authController.loginHandler);
 
     }
 }

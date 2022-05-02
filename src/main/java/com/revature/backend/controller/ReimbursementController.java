@@ -15,9 +15,9 @@ public class ReimbursementController {
     ReimbursementService reimbursementService = new ReimbursementService();
     //this Handler will get the HTTP GET request for all reimbursements and send back reimb from db
     public Handler getAllHandler = (ctx) -> {
-
+    Integer userIdHeader = Integer.valueOf(ctx.header("userId")); //Header
             //We need an ArrayList of Employee objects (we get from the service layer
-            ArrayList<Reimbursement> reimbursements = (ArrayList<Reimbursement>) reimbursementService.getAll();
+            ArrayList<Reimbursement> reimbursements = (ArrayList<Reimbursement>) reimbursementService.getAll(userIdHeader);
             //create a GSON object to convert java object to JSON (we can only transfer JSON (JSON universally understoond transfer lang
            Gson gson = new Gson();
            //Use the JSON .toJson() method to turn our Java into JSON

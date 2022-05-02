@@ -9,7 +9,7 @@ import static com.revature.backend.util.ConnectionUtil.getConnection;
 
 public class UserLoginDAO implements UserLoginDAOInterface{
     @Override
-    public User login(String username, String password, int userRole) throws SQLException {
+    public User login(String username, String password) throws SQLException {
         try (Connection connection = getConnection()) {
             String sql = "select * from ers_user where username = ? and password = ?";
 

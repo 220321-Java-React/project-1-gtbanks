@@ -11,7 +11,7 @@ public interface ReimbursementDAOInterface {
 
         //list abstract methods to include in DAO class
         //Method 1a: View all requests Mgr
-        List<Reimbursement> getAll() throws SQLException; //did not need {}
+        List<Reimbursement> getAll(Integer userId) throws SQLException; //did not need {}
 
         //Method 2: View all requests Staff
         List<Reimbursement> getAllOfMine() throws SQLException; //did not need {}

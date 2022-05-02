@@ -9,10 +9,10 @@ public class Reimbursement {
     private int reimb_author_id_fk;
     private int reimb_status_id_fk;
     private int reimb_type_id_fk;
-
-    public Reimbursement(int reimb_id, String reimb_type, String reimb_submitted, int reimb_author_id_fk, int reimb_status_id_fk, int reimb_type_id_fk) {
-        super();
-    }
+//Below was an apparent duplicate copy and may have been unnecessary
+ //   public Reimbursement(int reimb_id, String reimb_type, String reimb_submitted, int reimb_author_id_fk, int reimb_status_id_fk, int reimb_type_id_fk) {
+ //       super();
+ //   }
 
     public Reimbursement(int reimb_id, String reimb_type, int reimb_amount, int reimb_submitted,
                          int reimb_author_id_fk, int reimb_status_id_fk, int reimb_type_id_fk) {

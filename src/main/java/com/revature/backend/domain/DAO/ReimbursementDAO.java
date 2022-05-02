@@ -26,18 +26,21 @@ public class ReimbursementDAO implements ReimbursementDAOInterface {
     }
 
     @Override
-    public List<Reimbursement> getAll()
+    public List<Reimbursement> getAll(Integer userId)
             throws SQLException {
         try (Connection connection = getConnection()) {
-            String sql = "select * from ers_reimbursement;";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            String sql = "select * from ers_reimbursement where reimb_author_id_fk = ? ;";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
             List<Reimbursement> reimbursementList = new ArrayList<>();
             while (resultSet.next()) {
                 Reimbursement reimbursement = new Reimbursement(
                         resultSet.getInt("reimb_id"),
                         resultSet.getString("reimb_type"),
-                        resultSet.getString("reimb_submitted"),
+                        resultSet.getInt("reimb_amount"),
+                        resultSet.getInt("reimb_submitted"),
                         resultSet.getInt("reimb_author_id_fk"),
                         resultSet.getInt("reimb_status_id_fk"),
                         resultSet.getInt("reimb_type_id_fk")
@@ -68,7 +71,8 @@ public class ReimbursementDAO implements ReimbursementDAOInterface {
                 Reimbursement reimbursement = new Reimbursement(
                         resultSet.getInt("reimb_id"),
                         resultSet.getString("reimb_type"),
-                        resultSet.getString("reimb_submitted"),
+                        resultSet.getInt("reimb_amount"),
+                        resultSet.getInt("reimb_submitted"),
                         resultSet.getInt("reimb_author_id_fk"),
                         resultSet.getInt("reimb_status_id_fk"),
                         resultSet.getInt("reimb_type_id_fk")
