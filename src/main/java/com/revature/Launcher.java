@@ -18,19 +18,20 @@ public class Launcher {
         //try catch tests if Connection from ConnectionUtil Class is successfull
         //Note: getConnection() will return a Connection Object if successful
             try(Connection connection = ConnectionUtil.getConnection()) {
+                System.out.println("CONNECTED TO ERS");
 
             }catch (SQLException e) {//Connection failure triggers catch exception and print StackTrace
-                System.out.println("Failed Connection");
+                System.out.println("Oop!, Failed Connection");
                 e.printStackTrace();
             }
         //Webpage needs to send HTTP requests to Java server
         //Javalin is a technology used to take in HTTP requests from FE and send back HTTP responses
-        //HTTP Responses can range from reqquested data to status code: "data received" msg.
+        //HTTP Responses can range from requested data to status code: "data received" msg.
 
-        //Instantiating an EmployeeController object to access it's Handlers
+        //Instantiating an ReimbursementController object to access it's Handlers
         ReimbursementController reimbursementController = new ReimbursementController();
 
-      //  AuthController authController = new AuthController();
+        //AuthController authController = new AuthController();  //mentor says take this out
 
         //Javalin syntax to create Javalin object
         Javalin app = Javalin.create(
@@ -49,7 +50,7 @@ public class Launcher {
         //handler ending in /login that takes in POST requests validates user login
         //the app.post() method takes in a URL endpoint, and a place in the server to send the request
 
-        app.post("/login", handler);
+     //   app.post("/login", handler);
 
     }
 }

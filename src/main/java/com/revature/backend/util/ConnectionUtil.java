@@ -18,7 +18,7 @@ public class ConnectionUtil {
             e.printStackTrace();
             System.out.println("Driver error");
         }
-            String connectionString = "jdbc:postgresql://projectone.crkzplgaa0b3.us-west-1.rds.amazonaws.com";
+            String connectionString = "jdbc:postgresql://projectone.crkzplgaa0b3.us-west-1.rds.amazonaws.com:5432/postgres?currentSchema=project_one";
                     String username = System.getenv("DB_USER");
                     String password = System.getenv("DB_PASS");
 

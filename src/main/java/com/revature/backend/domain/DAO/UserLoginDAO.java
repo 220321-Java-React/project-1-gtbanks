@@ -26,6 +26,7 @@ public class UserLoginDAO implements UserLoginDAOInterface{
             ArrayList<String> userLoginList = new ArrayList<String>();
             //first applied here will identify any rows in the resultSet
             if(resultSet.next()) {
+            //if is used vs while because there is only one user for this login
                 User user = new User(resultSet.getInt("user_id"),
                                     resultSet.getString("username"),
                                     resultSet.getString("password"),
@@ -36,9 +37,11 @@ public class UserLoginDAO implements UserLoginDAOInterface{
                         );
                 return user;
             }
-            else{return null;
+            else {
+                return null;
 
             }
+        //Remember to close try before catch
         }
            catch (SQLException e) {
                 System.out.println("Error selecting your request");

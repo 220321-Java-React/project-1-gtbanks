@@ -25,12 +25,13 @@
 <div class= "container p-3 mb-2 bg-gradient-warning text-secondary  ">
 
     <h6>Employee Reimbursement System</h6>
-    <h3>myERS</h3>
+    <h3>Welcome to myERS</h3>
     <h6>Management
-        <button id="getAllReimbursementsButton" class="text-dark btn btn-sm btn-warning float-right">View All</button>
+        <button id="getAllReimbursementsButton" class="offset-5 text-dark btn btn-sm btn-warning float-right">View All</button>
         <button id="getAllPendingReimbursementsButton" class="text-dark btn btn-sm btn-warning float-right">Pending</button>
         <button id="getAllApprovedReimbursementsButton" class="text-dark btn btn-sm btn-warning float-right">Approved</button>
         <button id="getAllDeniedReimbursementsButton" class="text-dark btn btn-sm btn-warning pull-right">Denied</button>
+        <button id="getAllReimbursementsButton" class="text-dark btn btn-sm btn-danger pull-right">Update Status</button>
 
     </h6>
     <!-- See if we need line breaks... -->
@@ -40,7 +41,7 @@
     <!-- I want a table of employee information which we'll SELECT from the DB -->
 
     <div id="table-row" class="row">
-        <table id="reimbursements" class="font-size: smaller text-secondary table table-light table-bordered table-hover table-striped">
+        <table id="reimbursements" class="font-size: small text-secondary table table-light table-bordered table-hover table-striped">
             <thead>
             <tr>
                 <th>ID</th>

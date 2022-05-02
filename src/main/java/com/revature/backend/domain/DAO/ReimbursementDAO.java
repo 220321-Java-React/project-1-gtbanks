@@ -15,7 +15,6 @@ import static com.revature.backend.util.ConnectionUtil.getConnection;
 
 public class ReimbursementDAO implements ReimbursementDAOInterface {
 
-
     @Override
     public List<Reimbursement> getAllOfMine() throws SQLException {
         return null;
@@ -52,7 +51,6 @@ public class ReimbursementDAO implements ReimbursementDAOInterface {
             return new ArrayList<>();
         }
     }
-
 
     @Override
     public List<Reimbursement> getAllOfMine(int authorId) throws SQLException {
@@ -106,7 +104,6 @@ public class ReimbursementDAO implements ReimbursementDAOInterface {
     }
 
 }
-
 
 /*
     int reimb_id, String reimb_type, String reimb_submitted,

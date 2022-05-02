@@ -10,10 +10,17 @@ import java.sql.SQLException;
 public class AuthService {
         //validate login creds. here by calling the UserLoginDAO
         //pull methods create ArrayList
+
+        //define UserLoginDAO which holds login method for db integration
         UserLoginDAO userLoginDAO = new UserLoginDAO();
         public User userLogin (UserLoginDTO userLoginDTO) throws SQLException {
-        //Call the DAO method...use results in if() below
-        //the DAO method would return whatever ges found in the db
+        //method called from controller which has userloginDTO on HTTP request body
+        //we use the UserLoginDTO as a parameter which contains username/password
+        //SQL statements are in the DAO
+        //we do not need if statement here
+
+        //define userloginDAO
+        //We are using params(username/password) in LoginDTO
         User user = userLoginDAO.login(userLoginDTO.getUsername(), userLoginDTO.getPassword(),
                                         userLoginDTO.getUserRole());
 
