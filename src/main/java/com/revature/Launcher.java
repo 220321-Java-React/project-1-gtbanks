@@ -37,20 +37,21 @@ public class Launcher {
         Javalin app = Javalin.create(
                 //the config lambda lets us specify certain configurations.
                 config -> {
-                    config.enableCorsForAllOrigins(); //allows us to process JS requests from anywhere (overriding security protocol)
+                    config.enableCorsForAllOrigins(); //overrides default...allows us to process JS requests from anywhere (overriding security protocol)
                 }
         //starts Javalin application on port 3000
         ).start(3000);
         //We need to make some endpoint handlers, which will take in requests and send them where
         //they need to go.they are like the traffic cop to your server they direct traffic to specific appl locations
 
-        //handlers ending in reimbursement that takes in GET req - will return all reimbursements
+        //Endpoint handlers ending in reimbursement take in GET req - will return all reimbursements
         //the app.get() method takes in a URL endpoint and a place in the server to send the request
         app.get("/reimbursements", reimbursementController.getAllHandler);
         //handler ending in /login that takes in POST requests validates user login
-        //the app.post() method takes in a URL endpoint, and a place in the server to send the request
+        //the app.post() method takes in a URL endpoint, and a place in the server (Controller) to send the request
 
         app.post("/login", authController.loginHandler);
+        app.post("/reimbursements", reimbursementController.createReimbursementHandler);
 
     }
 }

@@ -18,7 +18,9 @@ public class ConnectionUtil {
             e.printStackTrace();
             System.out.println("Driver error");
         }
-            String connectionString = "jdbc:postgresql://projectone.crkzplgaa0b3.us-west-1.rds.amazonaws.com:5432/postgres?currentSchema=project_one";
+        String connectionString = "jdbc:postgresql://localhost:5432/postgres?currentSchema=p_one";
+        //AWS connection stopped due to free tier chrg.
+        // String connectionString = "jdbc:postgresql://projectone.crkzplgaa0b3.us-west-1.rds.amazonaws.com:5432/postgres?currentSchema=project_one";
                     String username = System.getenv("DB_USER");
                     String password = System.getenv("DB_PASS");
 

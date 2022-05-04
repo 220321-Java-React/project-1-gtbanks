@@ -3,9 +3,8 @@ package com.revature.backend.domain.model;
 public class Reimbursement {
 
     private int reimb_id;
-    private String reimb_type;
     private int reimb_amount;
-    private int reimb_submitted;
+    private String reimb_submitted;
     private int reimb_author_id_fk;
     private int reimb_status_id_fk;
     private int reimb_type_id_fk;
@@ -14,10 +13,9 @@ public class Reimbursement {
  //       super();
  //   }
 
-    public Reimbursement(int reimb_id, String reimb_type, int reimb_amount, int reimb_submitted,
+    public Reimbursement(int reimb_id, int reimb_amount, String reimb_submitted,
                          int reimb_author_id_fk, int reimb_status_id_fk, int reimb_type_id_fk) {
         this.reimb_id = reimb_id;
-        this.reimb_type = reimb_type;
         this.reimb_amount = reimb_amount;
         this.reimb_submitted = reimb_submitted;
         this.reimb_author_id_fk = reimb_author_id_fk;
@@ -29,7 +27,6 @@ public class Reimbursement {
     public String toString() {
         return "ReimbursementRequest{" +
                 "reimb_id=" + reimb_id +
-                ", reimb_type='" + reimb_type + '\'' +
                 ", reimb_amount=" + reimb_amount +
                 ", reimb_submitted=" + reimb_submitted +
                 ", reimb_author_id_fk=" + reimb_author_id_fk +
@@ -46,14 +43,6 @@ public class Reimbursement {
         this.reimb_id = reimb_id;
     }
 
-    public String getReimb_type() {
-        return reimb_type;
-    }
-
-    public void setReimb_type(String reimb_type) {
-        this.reimb_type = reimb_type;
-    }
-
     public int getReimb_amount() {
         return reimb_amount;
     }
@@ -62,11 +51,11 @@ public class Reimbursement {
         this.reimb_amount = reimb_amount;
     }
 
-    public int getReimb_submitted() {
+    public String getReimb_submitted() {
         return reimb_submitted;
     }
 
-    public void setReimb_submitted(int reimb_submitted) {
+    public void setReimb_submitted(String reimb_submitted) {
         this.reimb_submitted = reimb_submitted;
     }
 
