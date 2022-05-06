@@ -52,8 +52,9 @@ public class Launcher {
 
         app.post("/login", authController.loginHandler);
         app.post("/reimbursements", reimbursementController.createReimbursementHandler);
-
+        app.patch("/reimbursements/{id}", reimbursementController.updateReimbursementStatusHandler);
     }
+
 }
 
 

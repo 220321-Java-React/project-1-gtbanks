@@ -1,12 +1,10 @@
-package com.revature.backend.domain.DAO;
+package com.revature.backend.domain.dao;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 
 import com.revature.backend.domain.model.Reimbursement;
-import com.sun.org.apache.xerces.internal.util.Status;
 
 public interface ReimbursementDAOInterface {
 
@@ -28,7 +26,7 @@ public interface ReimbursementDAOInterface {
         Reimbursement create(Reimbursement reimbursement);
 
         //Method 6: resolve request
-        void update (int reimbursementId, Status updatedStatus);
+        void updateStatus (int reimbursementId, int updatedStatus);
 
     }
 

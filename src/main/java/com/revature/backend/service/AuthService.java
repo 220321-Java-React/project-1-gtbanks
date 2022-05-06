@@ -1,7 +1,7 @@
 package com.revature.backend.service;
 
 
-import com.revature.backend.domain.DAO.UserDAO;
+import com.revature.backend.domain.dao.UserDAO;
 import com.revature.backend.domain.model.User;
 import com.revature.backend.dtos.UserLoginDTO;
 

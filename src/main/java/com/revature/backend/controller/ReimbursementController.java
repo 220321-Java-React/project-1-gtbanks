@@ -2,6 +2,7 @@ package com.revature.backend.controller;
 
 import com.google.gson.Gson;
 import com.revature.backend.domain.model.Reimbursement;
+import com.revature.backend.dtos.UpdateStatusDTO;
 import com.revature.backend.dtos.UserLoginDTO;
 import com.revature.backend.service.ReimbursementService;
 import io.javalin.http.Handler;
@@ -27,6 +28,7 @@ public class ReimbursementController {
             ctx.result(JSONReimbursements); //.results sends a response of data back
             ctx.status(200); //.status() sets the HTTP status code. 200 =OK
     };
+    //User input from form sent here for business logic
     public Handler createReimbursementHandler = (ctx) -> {
         Integer userIdHeader = Integer.valueOf(ctx.header("userId")); //Header
         String body = ctx.body();
@@ -39,9 +41,19 @@ public class ReimbursementController {
         Reimbursement newReimbursement = reimbursementService.create(reimbursement);
         String JSONNewReimbursement = gson.toJson(newReimbursement);
         ctx.result(JSONNewReimbursement);
-        ctx.status(201);
+        ctx.status(201); //created status
     };
 
+public Handler updateReimbursementStatusHandler = (ctx) -> {
+   Integer reimbursementId = Integer.valueOf(ctx.pathParam("id"));
+    String body = ctx.body();
 
+    Gson gson = new Gson();
+
+    UpdateStatusDTO updatedStatusDTO = gson.fromJson(body, UpdateStatusDTO.class);
+    Integer updatedStatusId = updatedStatusDTO.getUpdatedStatusId();
+    reimbursementService.updateStatus(reimbursementId, updatedStatusId);
+    ctx.status(200);
+};
 
 }

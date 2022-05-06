@@ -1,10 +1,9 @@
 package com.revature.backend.service;
 
-import com.revature.backend.domain.DAO.ReimbursementDAO;
+import com.revature.backend.domain.dao.ReimbursementDAO;
 import com.revature.backend.domain.model.Reimbursement;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 //The service layer contains additional bus logic needed to process requests/responses
@@ -26,4 +25,8 @@ public class ReimbursementService {
         return reimbursementDAO.create(reimbursement);
     }
 
+    public void updateStatus(int reimbursementId, int updatedStatus) {
+        reimbursementDAO.updateStatus(reimbursementId, updatedStatus);
+
+    }
 }
