@@ -141,7 +141,7 @@ private UserDAO userDAO = new UserDAO();
     }
 
     @Override
-    public void updateStatus(int reimbursementId, int updatedStatus) {
+    public List<Reimbursement> updateStatus(int reimbursementId, int updatedStatus) {
 
         try (Connection connection = ConnectionUtil.getConnection()) {
 
@@ -156,6 +156,7 @@ private UserDAO userDAO = new UserDAO();
         } catch (SQLException e) {
             System.out.println("Error selecting your request");
         }
+        return null;  //changed from @test update test implementation suggested by intelliJ
     }
 
 }

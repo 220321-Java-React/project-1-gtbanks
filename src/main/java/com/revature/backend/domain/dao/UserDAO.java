@@ -15,9 +15,6 @@ public class UserDAO implements UserDAOInterface {  //renamed from userlogindao
             String sql = "select * from ers_user where username = ? and password = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-//Ben updated code to fix menu loop
-
             //include required variables in ps
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
@@ -26,8 +23,10 @@ public class UserDAO implements UserDAOInterface {  //renamed from userlogindao
             //Use an array list where the data type are String
             ArrayList<String> userLoginList = new ArrayList<String>();
             //first applied here will identify any rows in the resultSet
+            //The list of values
             if(resultSet.next()) {
             //if is used vs while because there is only one user for this login
+            //returning the whole user allows for some options in rendering user info on web page
                 User user = new User(resultSet.getInt("user_id"),
                                     resultSet.getString("username"),
                                     resultSet.getString("password"),
@@ -61,7 +60,7 @@ public class UserDAO implements UserDAOInterface {  //renamed from userlogindao
             ResultSet resultSet = preparedStatement.executeQuery();
             //first applied here will identify any rows in the resultSet
             if(resultSet.next()) {
-                //We will only get back the userRole
+                //if the result set is true evaluate nested if(userRoleId), if false go to else{}
                 Integer userRoleId = resultSet.getInt("user_role_id_fk");
                 //Is manager returns a boolean we use an if() because only seeking one object
                 //If statement checks to see if the userId entered is a manager
@@ -70,10 +69,9 @@ public class UserDAO implements UserDAOInterface {  //renamed from userlogindao
                 }
                 return false;
             }
-
+            //else does not compile w/out return false; above
             else {
-            //Do I need this else statement since I only care about a match with userID??
-                return false;
+                return false;//if false user is not a Manager
             }
             //Remember to close try before catch
         }

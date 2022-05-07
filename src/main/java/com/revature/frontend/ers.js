@@ -1,22 +1,24 @@
 const url = "http://localhost:3000";
-//putting base URL in a variable for cleaner code
+//put base URL in a variable for cleaner code
 //eventually , we'll use this in fetch request and make calls to our server by appending endpoints
 
 //add event listener to give button functionality
 //begin login
 ///
 //THIS FUNCTION sends user-input login creds to our server
+document.getElementById("loginButton").addEventListener("click", loginFunction);
 async function loginFunction(){
-
     //get user inputs from the login input
     //when login button is clicked, the value from username and password will be put into variables
-    let username = document.login("username").value;
-    let password = document.login("password").value;
-    
+    console.log("function")
+    //let username = document.login("username").value;
+    //let password = document.login("password").value;
+    let usern = document.getElementById("username").value;
+    let userp = document.getElementById("password").value;
     //user/pass we need to convert JSON to JS object before sending further
     let user = {
-        username:username,
-        password: password
+        username:usern,
+        password: userp
     }
     
     //The object must reflect the LoginDTO in Java...to be transferred
@@ -43,6 +45,13 @@ async function loginFunction(){
         //convert from json to JS
         let data = await response.json();
         //wipe our login row and welcome the user
+
+        if(data.user_role_id_fk ===1) {
+            window.location.href = 'WelcomeManagement.html';
+        }
+        else {
+            window.location.href = 'WelcomeStaff.html';
+        }
         document.login("loginRow").innerText="Welcome" +data.first_name + "! !";
         //put your redirect here if multipleHTML pages
         //window.location.href = 'https://ExampleURL.com/';
@@ -55,14 +64,13 @@ async function loginFunction(){
     }
 
 
-
 //end login
 document.getElementById("getAll").addEventListener("click", getAll);
 
-//getAll is an asynchronous function which has a fetch request to get employees from our server
+//getAll is an asynchronous function which has a fetch request to get reimbursements from our server
 //remember, asych makes a function return a promise(which fetch requests return)
 
-async function getEmployees() {
+async function getReimbursements() {
 
 //we will send a fetch req to get all reimb data
 //by default, fetch requests send GET req see jpw tp semd ptjers ;ole {PST
@@ -77,7 +85,7 @@ if(response.status === 200) {
     //parse JSON back to JS object
     //.json() method that turns json to JS object
     let data = await response.json();
-    //log the actual reimbursement dat parsed from JSON
+    //log the actual reimbursement data parsed from JSON
     console.log(data);
     //For every reimb object we get put it in the table
     for(let reimbursement of data){
@@ -124,6 +132,9 @@ if(response.status === 200) {
     }
 
 }
+
+//
+
 
 }   
 

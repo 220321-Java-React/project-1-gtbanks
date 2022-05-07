@@ -1,8 +1,10 @@
 package com.revature.services.domain.dao;
 
+import com.revature.backend.domain.model.Reimbursement;
 import org.junit.Test;
 import org.junit.jupiter.api.function.Executable;
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -26,8 +28,8 @@ public class UserDAOTest {
 
     //Use the @Test annotation
     @Test
-    public void testValidLoginCredentials() throws SQLException {
-        assertEquals(true, userDAOTest.login("sbriggs", "sheri"));
+    public void testValidLogin() throws SQLException {
+  //      assertNotNull(User
     
     }
     
@@ -40,6 +42,12 @@ public class UserDAOTest {
     @Test
     public void isNotAManager() {
 //        assertFalse(userTest.isManager()
+    }
+
+    @Test
+    public void testCanUpdateStatus() {
+        ReimbursementDAO reimburseentDAOTest = new ReimbursementDAO();
+       // List<Reimbursement> reimbursementList = reimburseentDAOTest.updateStatus("")
     }
 }
 

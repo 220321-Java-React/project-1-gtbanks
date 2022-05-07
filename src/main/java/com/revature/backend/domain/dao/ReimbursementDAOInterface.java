@@ -26,7 +26,7 @@ public interface ReimbursementDAOInterface {
         Reimbursement create(Reimbursement reimbursement);
 
         //Method 6: resolve request
-        void updateStatus (int reimbursementId, int updatedStatus);
+        List<Reimbursement> updateStatus (int reimbursementId, int updatedStatus);
 
     }
 
