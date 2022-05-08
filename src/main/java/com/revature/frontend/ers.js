@@ -56,7 +56,7 @@ async function loginFunction(){
         //This adds a new entry to the session history(user can use back button to return)
         //Reference: https://www.semrush.com/blog/javascript-redirect/
     }else {
-        document.getElementById("welcomeHead").innerText="Login Failed! Try aagain and Get it Right";
+        document.getElementById("welcomeHead").innerText="Login Failed! Try again and Get it Right";
         document.getElementById("welcomeHead").style.color = "red";
     }
 
