@@ -3,8 +3,12 @@ package com.revature;
 import com.revature.backend.controller.AuthController;
 import com.revature.backend.controller.ReimbursementController;
 import io.javalin.Javalin;
-import com.revature.backend.util.ConnectionUtil;
 
+import java.util.Scanner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.revature.backend.util.ConnectionUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -13,15 +17,22 @@ import java.sql.SQLException;
 
 public class Launcher {
 
+
     public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        Logger log = LogManager.getLogger(Launcher.class);
+
 
         //try catch tests if Connection from ConnectionUtil Class is successfull
         //Note: getConnection() will return a Connection Object if successful
             try(Connection connection = ConnectionUtil.getConnection()) {
                 System.out.println("CONNECTED TO ERS");
+                log.info("Hello connection");
 
             }catch (SQLException e) {//Connection failure triggers catch exception and print StackTrace
                 System.out.println("Oop!, Failed Connection");
+                log.info("Connection problem");
                 e.printStackTrace();
             }
         //Webpage needs to send HTTP requests to Java server

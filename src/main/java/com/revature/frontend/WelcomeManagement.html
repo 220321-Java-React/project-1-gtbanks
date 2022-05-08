@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--will redirect to the target url in "5" seconds-->
-    <meta http-equiv="refresh" content="5; url=/"URL">
+   <!---- <meta http-equiv="refresh" content="5; url=/"URL">-->
     <title>ERS Management: All Reimbursements</title>
 
     <!--  bootstrap for STYLE-->
@@ -30,11 +30,12 @@
     <h6>Employee Reimbursement System</h6>
     <h3>Welcome to myERS</h3>
     <h6>Management
-        <button id="getAllReimbursementsButton" class="offset-5 text-dark btn btn-sm btn-warning float-right">View All</button>
-        <button id="getAllPendingReimbursementsButton" class="text-dark btn btn-sm btn-warning float-right">Pending</button>
-        <button id="getAllApprovedReimbursementsButton" class="text-dark btn btn-sm btn-warning float-right">Approved</button>
-        <button id="getAllDeniedReimbursementsButton" class="text-dark btn btn-sm btn-warning pull-right">Denied</button>
-        <button id="getAllReimbursementsButton" class="text-dark btn btn-sm btn-warning pull-right">Update Status</button>
+        <!--Button names used in JS-->
+        <button id="getAllButton" class="offset-5 text-dark btn btn-sm btn-warning float-right">View All</button>
+        <button id="getAllPendingButton" class="text-dark btn btn-sm btn-warning float-right">Pending</button>
+        <button id="getAllApprovedButton" class="text-dark btn btn-sm btn-warning float-right">Approved</button>
+        <button id="getAllDeniedButton" class="text-dark btn btn-sm btn-warning pull-right">Denied</button>
+        <button id="getUpdateButton" class="text-dark btn btn-sm btn-warning pull-right">Update Status</button>
 
     </h6>
     <!-- See if we need line breaks... -->
@@ -66,6 +67,6 @@
     <button id="ERS Policy" class="text-danger btn btn-sm btn-default">ERS Policy</button>
 </div>
 
-
+<!--<a href="">Submit another reimbursement</a> -->
 </body>
 </html>
