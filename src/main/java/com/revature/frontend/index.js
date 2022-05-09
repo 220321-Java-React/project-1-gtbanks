@@ -41,14 +41,15 @@ async function loginFunction(){
         //convert from json to JS
         let data = await response.json();
         //wipe our login row and welcome the user
+        sessionStorage.setItem("user_id", data.user_id);
 
         //Remember to use direct URL from webpage as shown below:
         if(data.user_role_id_fk ===1) {
-             window.location.replace('http://127.0.0.1:5500/src/main/java/com/revature/frontend/WelcomeManagement.html') 
+             window.location.replace('http://127.0.0.1:5500/src/main/java/com/revature/frontend/Management.html') 
             //window.location.href = 'http://127.0.0.1:5500/src/main/java/com/revature/frontend/WelcomeManagement.html')
         }
         else {
-            window.location.href = 'http://127.0.0.1:5500/src/main/java/com/revature/frontend/WelcomeStaff.html';
+            window.location.href = 'http://127.0.0.1:5500/src/main/java/com/revature/frontend/Staff.html';
         }
         document.login("loginRow").innerText="Welcome" +data.first_name + "! !";
         //put your redirect here if multipleHTML pages 
@@ -59,7 +60,7 @@ async function loginFunction(){
         document.getElementById("welcomeHead").innerText="Login Failed! Try again and Get it Right";
         document.getElementById("welcomeHead").style.color = "red";
     }
-
+}
 //end login
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -69,7 +70,7 @@ async function loginFunction(){
 //When the loginButton gets clicked, execute the loginFunction
 document.getElementById("loginButton").addEventListener("click", getAll);
 */
-
+/*
 document.getElementById("getAllButoon").addEventListener("click", getAll);
 
 //getAll is an asynchronous function which has a fetch request to get reimbursements from our server
@@ -140,11 +141,10 @@ if(response.status === 200) {
     }
 
 }
-
+*/
 //
 
-}
-  
+
 
 
 

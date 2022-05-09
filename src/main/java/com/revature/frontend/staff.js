@@ -2,7 +2,7 @@ const url = "http://localhost:3000";
 
 
 document.getElementById("getAllButton").addEventListener("click", getAll);
-
+document.getElementById("createButton").addEventListener("click", createReimbursement);
 //getAll is an asynchronous function which has a fetch request to get reimbursements from our server
 //remember, asych makes a function return a promise(which fetch requests return) it is left empty
 async function getAll() {
@@ -12,8 +12,8 @@ async function getAll() {
 //The url = http://localhost:3000"+ resource named in Launcher and controller handlers
 
 let response = await fetch(url + "/reimbursements", {
-    headers:{"Id":3},
-    credentials: "include"}); //afterurl string not in 1st part of video
+    headers:{"userId":sessionStorage.getItem("user_id")},
+    credentials: "include"}); 
 
 //log the response in the console just to see the response object(good for debugging)
 console.log(response);
@@ -72,5 +72,8 @@ if(response.status === 200) {
         //alert cause a popup!!
         alert ("OOh your request failed for some reason:/");
     }
-
 }
+async function createReimbursement() {
+    window.location.replace('http://127.0.0.1:5500/src/main/java/com/revature/frontend/RequestForm.html');
+}
+

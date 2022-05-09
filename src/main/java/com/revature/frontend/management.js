@@ -12,7 +12,8 @@ async function getAll() {
 //The url = http://localhost:3000"+ resource named in Launcher and controller handlers
 
 let response = await fetch(url + "/reimbursements", {
-    headers:{"Id":1},
+    headers:{"userId":sessionStorage.getItem("user_id")
+},
     credentials: "include"}); //afterurl string not in 1st part of video
 
 //log the response in the console just to see the response object(good for debugging)
